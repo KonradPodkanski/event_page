@@ -1,0 +1,31 @@
+@keyframes dropdown {
+	from {
+		transform: translateY(-30%);
+		opacity: 0;
+		
+	}
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+@keyframes pulseEffect {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 0.5;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(1.2);
+		opacity: 0;
+	}
+}
+@keyframes pulseEffectBtn {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+}

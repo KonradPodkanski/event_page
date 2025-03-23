@@ -1,0 +1,11 @@
+@mixin container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	
+}
+@mixin font($size) {
+    font-size: $size + rem;
+    text-align: center;
+}

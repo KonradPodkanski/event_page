@@ -1,0 +1,657 @@
+// Import scss styles
+@use "colors.scss";
+@use "animations.scss";
+@use "mixins.scss";
+@use "breakpoints.scss";
+
+// Reset
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-size: inherit;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+//Font
+
+@font-face {
+	font-family: "Sansumi";
+	src: url("../Sansumi-font/Sansumi-UltraLight.ttf");
+}
+
+//General
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	position: relative;
+	@include mixins.container;
+	font-family: "Lato", Arial, Helvetica;
+	min-height: 150vh;
+	color: colors.$color-font;
+}
+
+h1,
+h2 {
+	font-family: Sansumi, Lato;
+}
+h1 {
+	@include mixins.font(4);
+}
+h2 {
+	@include mixins.font(3);
+	margin: 2rem 0 2rem 0;
+}
+p {
+	@include mixins.font(1.8);
+}
+i {
+	@include mixins.font(3);
+}
+li {
+	@include mixins.font(3);
+}
+footer {
+	background: none;
+	p {
+		@include mixins.font(1.2);
+	}
+}
+a {
+	position: relative;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	padding: 1rem 2rem;
+	color: colors.$color-font;
+}
+hr {
+	border: 1px solid colors.$color-font;
+	width: 60%;
+	margin: 0 0 5rem 0;
+}
+img {
+	user-select: none;
+}
+header {
+	width: 100%;
+	background-color: colors.$color-main;
+}
+section {
+	width: 100%;
+}
+section:nth-child(even) {
+	background-color: colors.$color-main;
+}
+section:nth-child(even)::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: colors.$shadow-light-lo;
+	z-index: -1;
+}
+
+.logo {
+	img {
+		height: 25rem;
+	}
+}
+.company-headline{
+	text-transform: uppercase;
+}
+.about-us,
+.photo-gallery {
+	min-height: 50vh;
+}
+
+.bg-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: url("../img/background-img.webp")
+		center/cover no-repeat;
+	filter: blur(0.4rem);
+	z-index: -1;
+}
+.bg-fixed::after {
+	content: "";
+	position: absolute;
+	inset: 0; // shortcut for top:0; right:0; bottom:0; left:0
+	background-color: colors.$color-main;
+	opacity: 0.35;
+	pointer-events: none; // allows to click through the element
+	z-index: 1;
+}
+
+.container {
+	@include mixins.container;
+	margin: 3rem 2rem 3rem 2rem;
+	min-height: 20rem;
+	padding: 0 0 3rem 0;
+	text-align: center;
+}
+
+// Language switcher
+.language-switcher {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 1rem 1.5rem;
+	select {
+		outline-color: colors.$color-font;
+		text-align-last: left;
+		font-size: 1.4rem; // mixin wrongly works
+		color: colors.$color-font;
+		border: none;
+		background: none;
+		padding: 1rem 1.5rem;
+		cursor: pointer;
+		option {
+			border: none;
+			background: none;
+		}
+	}
+}
+// Navigation
+
+.nav-menu {
+	position: absolute;
+	transform: translateY(-100%);
+	background-color: colors.$color-tenth;
+	width: 100%;
+	height: 100vh;
+	transition: transform 0.6s;
+	z-index: 2;
+	ul {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		letter-spacing: 0.1rem;
+		list-style: none;
+		li {
+			width: 25rem;
+			opacity: 0;
+			padding: 1rem 2rem;
+			transition: transform 0.3s opacity 0.3s;
+			font-family: "Sansumi";
+			font-weight: 900;
+			svg {
+				width: 3.5rem;
+				height: 3.5rem;
+			}
+		}
+		.menu-logo {
+			width: 100%;
+		}
+	}
+	a {
+		transition: color 0.3s;
+		padding: 0 1rem;
+	}
+}
+
+i {
+	transition: font-weight 0.3s, color 0.3s, transform 0.3s;
+}
+svg {
+	width: 4rem;
+	height: 4rem;
+}
+
+line,
+rect,
+circle,
+path {
+	stroke: colors.$color-font;
+	transition: stroke 0.3s;
+}
+
+.burger {
+	position: absolute;
+	background: none;
+	border: none;
+	z-index: 100;
+	color: colors.$color-font;
+	cursor: pointer;
+	padding: 1rem 1.5rem;
+	.hide {
+		display: none;
+	}
+}
+
+.active {
+	transform: translateY(0%);
+}
+.dropdown {
+	animation: dropdown 0.5s forwards;
+}
+.scroll-top {
+	position: fixed;
+	bottom: 0rem;
+	right: 0rem;
+	width: 5rem;
+	height: 5rem;
+	opacity: 0.8;
+	background: none;
+	border-radius: 50%;
+	color: colors.$color-font;
+	cursor: pointer;
+	display: none;
+	text-decoration: none;
+	z-index: 100;
+
+	.fa-solid {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translate(80%, 50%);
+		@include mixins.font(2.5);
+	}
+}
+
+.active {
+	display: block;
+}
+
+// About Us
+.about-us {
+	p {
+		padding: 1rem 0;
+	}
+}
+.show-delay {
+	opacity: 0;
+}
+
+.about-us-img {
+	border-radius: 0.5rem;
+	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+	margin-top: 5rem;
+	height: 27rem;
+}
+
+// Swiper
+
+.swiper {
+	position: relative;
+	width: 31rem;
+	height: 45rem;
+	z-index: 1;
+
+	.swiper-pagination {
+		position: absolute;
+		bottom: 0;
+		z-index: 50;
+	}
+}
+.swiper-slide {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	img {
+		position: absolute;
+		top: 2rem;
+		border-radius: 1.5rem;
+		width: 29rem;
+		height: 41rem;
+		object-fit: cover;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+	}
+}
+
+.swiper-pagination-bullet {
+	background-color: colors.$shadow-light;
+	opacity: 0.2;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: colors.$shadow-light;
+	opacity: 0.6;
+	transform: scale(1.3);
+}
+.swiper-button-next,
+.swiper-button-prev {
+	color: colors.$color-main;
+	opacity: 0.6;
+}
+
+.move-to-gallery-btn {
+	position: relative;
+	cursor: pointer;
+	font-size: 1.6rem;
+	margin-top: 5rem;
+	padding: 2rem 4rem;
+	border: 1px solid colors.$color-font;
+	border-radius: 1rem;
+	color: colors.$color-font;
+	background-color: transparent;
+	transition: border 0.3s;
+}
+
+// Contact
+
+.contact-info {
+	i {
+		@include mixins.font(2.2);
+		margin: 0 1.5rem 0 7rem;
+	}
+
+	a {
+		padding: 0;
+	}
+}
+.contact {
+	display: flex;
+	min-height: 2rem;
+	width: 100%;
+	margin: 1rem;
+	.fa-chevron-right {
+		@include mixins.font(2);
+		margin-left: 0.5rem;
+	}
+	p {
+		cursor: pointer;
+	}
+}
+
+// gallery
+
+.section-gallery {
+	position: relative;
+	background-color: colors.$color-main;
+
+	footer {
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		bottom: 0;
+	}
+}
+.gallery-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+	width: 100%;
+	gap: 2rem;
+
+	img {
+		height: 25rem;
+		width: 100%;
+		object-fit: cover;
+		border-radius: 0.5rem;
+	}
+}
+
+// Media
+
+@media (min-width: breakpoints.$mobile) {
+	.about-us {
+		p {
+			margin: 0 5rem 0 5rem;
+		}
+	}
+}
+@media (min-width: breakpoints.$mobile) and (max-width: breakpoints.$gallery-sm) {
+	.section-gallery {
+		.container {
+			margin: 0 10rem;
+		}
+	}
+}
+@media (min-width: breakpoints.$tablet) and (max-width: breakpoints.$tablet-landscape) {
+	.swiper {
+		width: 70rem;
+	}
+}
+
+@media (min-width: breakpoints.$tablet) {
+	.about-us {
+		p {
+			margin: 0 10rem;
+		}
+	}
+	.about-us-img {
+		height: 30rem;
+	}
+
+	.swiper-slide {
+		img {
+			width: 30rem;
+			height: 40rem;
+		}
+	}
+}
+
+@media (min-width: breakpoints.$tablet-landscape) {
+	.nav-menu {
+		a {
+			padding-bottom: .5rem;
+		}
+
+		a::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 0.2rem;
+			background-color: colors.$color-eleventh;
+			transform: scaleX(0);
+			transform-origin: right; /* Start od prawej strony */
+			transition: transform 0.3s ease;
+		}
+
+		a:hover {
+			color: colors.$color-eleventh;
+
+			line,
+			rect,
+			circle,
+			path {
+				stroke: colors.$color-eleventh;
+			}
+		}
+
+		a:hover::after {
+			transform: scaleX(1);
+			transform-origin: left; /* Zakończenie po lewej stronie */
+		}
+
+		ul {
+			li {
+				width: 30rem;
+
+				svg {
+					width: 5rem;
+					height: 5rem;
+				}
+			}
+		}
+	}
+
+	.about-us {
+		p {
+			margin: 0 20rem;
+		}
+	}
+
+	// General
+	h1 {
+		@include mixins.font(5);
+		top: 31rem;
+	}
+	h2 {
+		@include mixins.font(4);
+	}
+	p {
+		@include mixins.font(2);
+	}
+	i {
+		@include mixins.font(4);
+	}
+	li {
+		@include mixins.font(4);
+	}
+	// Contact
+	.contact-info {
+		i {
+			@include mixins.font(2.5);
+		}
+	}
+	// Swiper
+	.swiper {
+		height: 47rem;
+		width: 100rem;
+	}
+	.swiper-slide {
+		img {
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+	}
+	.swiper-slide-active {
+		img {
+			transform: scale(1.1);
+		}
+	}
+	.swiper-slide-next img,
+	.swiper-slide-prev img {
+		transform: scale(0.9);
+		opacity: 0.7;
+	}
+}
+
+@media (max-width: breakpoints.$desktop) {
+	// Pulse arrow
+	.scroll-top::after {
+		content: "";
+		position: absolute;
+		transform: translate(-50%, -50%) scale(1);
+		top: 50%;
+		left: 50%;
+		width: 4rem;
+		height: 4rem;
+		background: none;
+		border-radius: 50%;
+		border: 0.2rem solid colors.$color-font;
+		opacity: 0;
+		animation: pulseEffect 2.5s infinite ease;
+	}
+	.contact {
+		.fa-chevron-right {
+			@include mixins.font(1.3);
+		}
+	}
+}
+@media (min-width: breakpoints.$desktop) {
+	//General
+	.logo {
+		img {
+			height: 35rem;
+		}
+	}
+	.burger {
+		svg {
+			width: 5rem;
+			height: 5rem;
+		}
+	}
+	h1 {
+		@include mixins.font(6);
+		top: 41rem;
+	}
+	h2 {
+		@include mixins.font(5);
+	}
+	p {
+		@include mixins.font(2.6);
+	}
+	i {
+		@include mixins.font(4.4);
+	}
+	li {
+		@include mixins.font(4.2);
+	}
+	.contact-info {
+		i {
+			@include mixins.font(3.2);
+		}
+	}
+	.container {
+		margin: 4rem 8rem 3rem 8rem;
+	}
+
+	.about-us-img {
+		height: 37rem;
+	}
+	.swiper {
+		height: 53rem;
+		width: 108rem;
+	}
+	.swiper-slide {
+		img {
+			top: 3rem;
+			width: 33rem;
+			height: 45rem;
+		}
+	}
+	.move-to-gallery-btn {
+		border: none;
+		font-size: 2.2rem;
+	}
+	.move-to-gallery-btn::after {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 7rem;
+		top: 0;
+		left: 0;
+		border-radius: 1.5rem;
+		border: 0.1rem solid colors.$color-font;
+		opacity: 1;
+	}
+	.move-to-gallery-btn::after {
+		animation: pulseEffectBtn 2.5s infinite ease;
+	}
+}
+@media (min-width: breakpoints.$desktop-lg) {
+	.swiper {
+		height: 65rem;
+		width: 120rem;
+	}
+	.swiper-slide {
+		img {
+			top: 3rem;
+			width: 38rem;
+			height: 52rem;
+		}
+	}
+
+	// Gallery
+	.gallery {
+		grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+	}
+	.gallery-container {
+		img {
+			height: 35rem;
+		}
+	}
+}
