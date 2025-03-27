@@ -213,6 +213,7 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka dekoracje";
 		}
+	elements.pageTitle.style.marginLeft = 0 + "rem";
 	} else {
 		// Return to the original title
 		if (localStorage.getItem("language") === "en") {
