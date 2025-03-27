@@ -92,7 +92,7 @@ const copyMail = () => {
 };
 
 const copyPhoneNumber = () => {
-	const phone = "+48 123 456 789"; //Phone number for copying
+	const phone = "+48 789 647 388"; //Phone number for copying
 	navigator.clipboard
 		.writeText(phone)
 		.then(() => {
