@@ -157,6 +157,8 @@ const translations = {
 
 function changeLanguage(language) {
 	localStorage.setItem("language", language);
+	window.location.reload();
+	// Apply the selected language	
 	applyLanguage(language);
 }
 
