@@ -106,12 +106,19 @@ section:nth-child(even)::after {
 		height: 25rem;
 	}
 }
-.company-headline{
+// Company headline
+
+.company-headline {
 	text-transform: uppercase;
+	min-width: 30rem;
+	.page-title{
+		margin-left: -1rem;
+	}
 }
+
 .about-us,
 .photo-gallery {
-	min-height: 50vh;
+	min-height: 30vh;
 }
 
 .bg-fixed {
@@ -120,8 +127,7 @@ section:nth-child(even)::after {
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-	background: url("../img/background-img.webp")
-		center/cover no-repeat;
+	background: url("../img/background-img.webp") center/cover no-repeat;
 	filter: blur(0.4rem);
 	z-index: -1;
 }
@@ -444,7 +450,7 @@ path {
 @media (min-width: breakpoints.$tablet-landscape) {
 	.nav-menu {
 		a {
-			padding-bottom: .5rem;
+			padding-bottom: 0.5rem;
 		}
 
 		a::after {

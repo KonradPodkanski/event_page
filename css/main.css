@@ -150,11 +150,15 @@ section:nth-child(even)::after {
 
 .company-headline {
   text-transform: uppercase;
+  min-width: 30rem;
+}
+.company-headline .page-title {
+  margin-left: -1rem;
 }
 
 .about-us,
 .photo-gallery {
-  min-height: 50vh;
+  min-height: 30vh;
 }
 
 .bg-fixed {

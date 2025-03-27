@@ -9,7 +9,9 @@ const elements = {
 	galleryBtn: document.querySelector(".move-to-gallery-btn"),
 	aboutUsImg: document.querySelector(".about-us-img"),
 	swiper: document.querySelector(".swiper"),
+	pageTitle: document.querySelector(".page-title"),
 };
+
 // Menu toggling if burger icon is clicked
 const toggleMenu = () => {
 	elements.list.classList.toggle("active");
@@ -40,6 +42,7 @@ const closeMenu = () => {
 const handleScroll = () => {
 	elements.scrollTopBtn.style.display = window.scrollY > 200 ? "block" : "none";
 };
+
 // Turning on function for image display
 
 const showElement = () => {
@@ -48,39 +51,34 @@ const showElement = () => {
 		: (elements.aboutUsImg.style.opacity = 0);
 };
 
-// Changing image depends on reolution
-
-const changeImage = () => {
-	if (window.matchMedia("(min-width: 576px").matches) {
-		elements.aboutUsImg.src = "./img/kwiaty2.webp";
-	} else {
-		elements.aboutUsImg.src = "./img/kwiaty1.webp";
-	}
-};
-
 // Slider
 /*
  * Swiper.js - https://swiperjs.com/
  * Autor: @nolimits4web, Licencja: MIT
  */
-if(elements.swiper) {
-const swiper = new Swiper(".swiper", {
-	slidesPerView: 1, // Slides per view
-	loop: true, // slide looping
-	pagination: { el: ".swiper-pagination", clickable: true },
-	navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-	autoplay: { delay: 3000 }, // Auto scrolling
-	breakpoints: {
-		768: {
-			slidesPerView: 2,
+if (elements.swiper) {
+	const swiper = new Swiper(".swiper", {
+		slidesPerView: 1, // Slides per view
+		loop: true, // slide looping
+		pagination: { el: ".swiper-pagination", clickable: true },
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
 		},
-		1024: {
-			slidesPerView: 3,
-			centeredSlides: true,
+		autoplay: { delay: 3000 }, // Auto scrolling
+		breakpoints: {
+			768: {
+				slidesPerView: 2,
+			},
+			1024: {
+				slidesPerView: 3,
+				centeredSlides: true,
+			},
 		},
-	},
-});
+	});
 }
+// Funtion provides copying e-mail and phone number
+
 const copyMail = () => {
 	const mail = "kontakt@bezbezbez.pl"; //Email for copying
 	navigator.clipboard
@@ -106,12 +104,15 @@ const copyPhoneNumber = () => {
 };
 
 function changeAfterSize(width, height) {
-	button.style.setProperty('--after-width', `${width}rem`);
-	button.style.setProperty('--after-height', `${height}rem`);
-  }
+	button.style.setProperty("--after-width", `${width}rem`);
+	button.style.setProperty("--after-height", `${height}rem`);
+}
+
+// Database of specific language
 
 const translations = {
 	pl: {
+		pageTitle: "florystyka | dekoracje",
 		menuAboutUs: "O nas",
 		menuGallery: "Galeria",
 		menuContact: "Kontakt",
@@ -132,6 +133,7 @@ const translations = {
 		footerTitle: "© 2025 bezbezbez. Wszelkie prawa zastrzeżone.",
 	},
 	en: {
+		pageTitle: "Floral Design | Decorations",
 		menuAboutUs: "About Us",
 		menuGallery: "Gallery",
 		menuContact: "Contact",
@@ -152,36 +154,77 @@ const translations = {
 		footerTitle: "© 2025 bezbezbez. All rights reserved.",
 	},
 };
+
 function changeLanguage(language) {
-	localStorage.setItem('language', language);
+	localStorage.setItem("language", language);
 	applyLanguage(language);
-  }
-  
-  function applyLanguage(language) {
-	document.querySelectorAll('[data-translate]').forEach(element => {
-	  const key = element.getAttribute('data-translate');
-	  if (translations[language][key]) {
-		element.innerText = translations[language][key];
-	  }
+}
+
+function applyLanguage(language) {
+	document.querySelectorAll("[data-translate]").forEach(element => {
+		const key = element.getAttribute("data-translate");
+		if (translations[language][key]) {
+			element.innerText = translations[language][key];
+		}
 	});
-  }
-  
-  // When the page is loaded
-  document.addEventListener('DOMContentLoaded', () => {
-	const savedLanguage = localStorage.getItem('language') || 'pl';
+}
+
+// When the page is loaded
+
+document.addEventListener("DOMContentLoaded", () => {
+	const savedLanguage = localStorage.getItem("language") || "pl";
 	applyLanguage(savedLanguage);
-  
+	titleModifier(savedLanguage);
 	// Langugage dropdown
-	const select = document.getElementById('language-select');
+	const select = document.getElementById("language-select");
 	if (select) {
-	  select.value = savedLanguage;
-	  select.addEventListener('change', (e) => changeLanguage(e.target.value));
+		select.value = savedLanguage;
+		select.addEventListener("change", e => changeLanguage(e.target.value));
 	}
-  });
-  
+});
 
+// If the lanugage is changed to english, changing the title margin for better position
 
-// Listeners
+function titleModifier(chosenLanguage) {
+	if (chosenLanguage === "en") {
+		elements.pageTitle.style.marginLeft = -4 + "rem";
+	}
+}
+
+// Changing properties depend on reolution
+
+const changePropertiesDependsOnResolution = () => {
+	if (document.body.classList.contains("main-page")) {
+		if (window.matchMedia("(min-width: 576px)").matches) {
+			elements.aboutUsImg.src = "./img/kwiaty2.webp";
+		} else {
+			elements.aboutUsImg.src = "./img/kwiaty1.webp";
+		}
+	}
+	// If resolution is lover than 600px, changing the title
+	if (window.matchMedia("(max-width: 665px)").matches) {
+		// Jeśli jest ustawiony język angielski
+		if (localStorage.getItem("language") === "en") {
+			document.querySelector("[data-translate='pageTitle']").innerText =
+				"floral design decorations";
+		} else if (localStorage.getItem("language") === "pl") {
+			document.querySelector("[data-translate='pageTitle']").innerText =
+				"florystyka dekoracje";
+		}
+	} else {
+		// Return to the original title
+		if (localStorage.getItem("language") === "en") {
+			document.querySelector("[data-translate='pageTitle']").innerText =
+				"floral design | decorations";
+		} else if (localStorage.getItem("language") === "pl") {
+			document.querySelector("[data-translate='pageTitle']").innerText =
+				"florystyka | dekoracje";
+		}
+	}
+};
+
+// Listeners, actions
+
 elements.burger.addEventListener("click", toggleMenu);
 elements.li.forEach(item => item.addEventListener("click", closeMenu));
 window.addEventListener("scroll", handleScroll);
@@ -195,12 +238,14 @@ if (window.innerWidth > 1024) {
 		}
 	});
 }
-window.addEventListener("DOMContentLoaded", changeImage);
-window.addEventListener("resize", changeImage);
+window.addEventListener(
+	"DOMContentLoaded",
+	changePropertiesDependsOnResolution
+);
+window.addEventListener("resize", changePropertiesDependsOnResolution);
 if (document.body.classList.contains("main-page")) {
 	window.addEventListener("scroll", showElement);
 	elements.galleryBtn.addEventListener("click", () => {
 		window.open("./pages/gallery.html", "_blank");
 	});
 }
-
