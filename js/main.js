@@ -2,6 +2,8 @@
 // Date: March 2024
 // Copyright (c) 2025. All rights reserved.
 
+// This file contains the main JavaScript code for the website, including menu toggling, scroll handling, image display, and language translation.
+"use strict";
 const elements = {
 	list: document.querySelector(".nav-menu"),
 	bars: document.querySelector(".fa-bars"),
@@ -50,7 +52,7 @@ const handleScroll = () => {
 // Turning on function for image display
 
 const showElement = () => {
-	window.scrollY > 400 && window.scrollY < 1100
+	window.scrollY > 450 && window.scrollY < 1100
 		? (elements.aboutUsImg.style.animation = "dropdown 1.5s ease forwards")
 		: (elements.aboutUsImg.style.opacity = 0);
 };
