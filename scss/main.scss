@@ -364,7 +364,7 @@ path {
 	display: flex;
 	min-height: 2rem;
 	width: 100%;
-	margin: 1rem;
+	margin:	1.5rem 0;
 	.fa-chevron-right {
 		@include mixins.font(2);
 		margin-left: 0.5rem;
@@ -374,7 +374,7 @@ path {
 	}
 }
 
-// gallery
+// gallery sub-page
 
 .section-gallery {
 	position: relative;
