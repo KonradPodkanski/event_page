@@ -1,3 +1,7 @@
+// Created by: Konrad Podkanski
+// Date: March 2024
+// Copyright (c) 2025. All rights reserved.
+
 const elements = {
 	list: document.querySelector(".nav-menu"),
 	bars: document.querySelector(".fa-bars"),
@@ -199,13 +203,15 @@ const changePropertiesDependsOnResolution = () => {
 	if (document.body.classList.contains("main-page")) {
 		if (window.matchMedia("(min-width: 576px)").matches) {
 			elements.aboutUsImg.src = "./img/kwiaty2.webp";
+			elements.pageTitle.style.fontSize = 6 + "rem";
 		} else {
+			elements.pageTitle.style.fontSize = 3 + "rem";
 			elements.aboutUsImg.src = "./img/kwiaty1.webp";
 		}
 	}
 	// If resolution is lover than 600px, changing the title
 	if (window.matchMedia("(max-width: 665px)").matches) {
-		// Jeśli jest ustawiony język angielski
+		// If the language is english, changing the title
 		if (localStorage.getItem("language") === "en") {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"floral design decorations";
@@ -213,6 +219,7 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka dekoracje";
 		}
+	
 	elements.pageTitle.style.marginLeft = 0 + "rem";
 	} else {
 		// Return to the original title

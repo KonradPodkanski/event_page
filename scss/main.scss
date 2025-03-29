@@ -43,7 +43,7 @@ h2 {
 	font-family: Sansumi, Lato;
 }
 h1 {
-	@include mixins.font(4);
+	@include mixins.font(6);
 }
 h2 {
 	@include mixins.font(3);
