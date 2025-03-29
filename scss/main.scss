@@ -364,7 +364,7 @@ path {
 	display: flex;
 	min-height: 2rem;
 	width: 100%;
-	margin:	1.5rem 0;
+	margin:	1.5rem 1rem 1.5rem 0rem;
 	.fa-chevron-right {
 		@include mixins.font(2);
 		margin-left: 0.5rem;
