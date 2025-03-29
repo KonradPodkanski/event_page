@@ -46,7 +46,7 @@ h1 {
 	@include mixins.font(6);
 }
 h2 {
-	@include mixins.font(3);
+	@include mixins.font(3.3);
 	margin: 2rem 0 2rem 0;
 }
 p {
