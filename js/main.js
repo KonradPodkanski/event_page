@@ -164,7 +164,7 @@ const translations = {
 function changeLanguage(language) {
 	localStorage.setItem("language", language);
 	window.location.reload();
-	// Apply the selected language	
+	// Apply the selected language
 	applyLanguage(language);
 }
 
@@ -205,9 +205,7 @@ const changePropertiesDependsOnResolution = () => {
 	if (document.body.classList.contains("main-page")) {
 		if (window.matchMedia("(min-width: 576px)").matches) {
 			elements.aboutUsImg.src = "./img/kwiaty2.webp";
-			elements.pageTitle.style.fontSize = 6 + "rem";
 		} else {
-			elements.pageTitle.style.fontSize = 3 + "rem";
 			elements.aboutUsImg.src = "./img/kwiaty1.webp";
 		}
 	}
@@ -221,8 +219,8 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka dekoracje";
 		}
-	
-	elements.pageTitle.style.marginLeft = 0 + "rem";
+		elements.pageTitle.style.fontSize = 3 + "rem";
+		elements.pageTitle.style.marginLeft = 0 + "rem";
 	} else {
 		// Return to the original title
 		if (localStorage.getItem("language") === "en") {
@@ -232,6 +230,7 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka | dekoracje";
 		}
+		elements.pageTitle.style.fontSize = 6 + "rem";
 	}
 };
 

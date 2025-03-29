@@ -111,7 +111,7 @@ section:nth-child(even)::after {
 .company-headline {
 	text-transform: uppercase;
 	min-width: 30rem;
-	.page-title{
+	.page-title {
 		margin-left: -1rem;
 	}
 }
@@ -364,7 +364,7 @@ path {
 	display: flex;
 	min-height: 2rem;
 	width: 100%;
-	margin:	1.5rem 1rem 1.5rem 0rem;
+	margin: 1.5rem 1rem 1.5rem 0rem;
 	.fa-chevron-right {
 		@include mixins.font(2);
 		margin-left: 0.5rem;
@@ -372,12 +372,13 @@ path {
 	p {
 		cursor: pointer;
 	}
-}
-.contact  p,a {
-	@include mixins.font(2.2);
-}
-.contact i{
-	@include mixins.font(2.8);
+	p,
+	a {
+		@include mixins.font(2.2);
+	}
+	i {
+		@include mixins.font(2.8);
+	}
 }
 
 // gallery sub-page

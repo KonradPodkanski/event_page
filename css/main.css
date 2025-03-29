@@ -415,12 +415,11 @@ path {
 .contact p {
   cursor: pointer;
 }
-
-.contact p, a {
+.contact p,
+.contact a {
   font-size: 2.2rem;
   text-align: center;
 }
-
 .contact i {
   font-size: 2.8rem;
   text-align: center;
