@@ -373,6 +373,12 @@ path {
 		cursor: pointer;
 	}
 }
+.contact  p,a {
+	@include mixins.font(2.2);
+}
+.contact i{
+	@include mixins.font(2.8);
+}
 
 // gallery sub-page
 

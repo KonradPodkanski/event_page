@@ -416,6 +416,16 @@ path {
   cursor: pointer;
 }
 
+.contact p, a {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.contact i {
+  font-size: 2.8rem;
+  text-align: center;
+}
+
 .section-gallery {
   position: relative;
   background-color: #f5f6f0;
