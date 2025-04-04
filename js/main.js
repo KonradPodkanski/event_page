@@ -52,7 +52,7 @@ const handleScroll = () => {
 // Turning on function for image display
 
 const showElement = () => {
-	window.scrollY > 450 && window.scrollY < 1100
+	window.scrollY > 600 && window.scrollY < 1100
 		? (elements.aboutUsImg.style.animation = "dropdown 1.5s ease forwards")
 		: (elements.aboutUsImg.style.opacity = 0);
 };
@@ -204,9 +204,9 @@ function titleModifier(chosenLanguage) {
 const changePropertiesDependsOnResolution = () => {
 	if (document.body.classList.contains("main-page")) {
 		if (window.matchMedia("(min-width: 576px)").matches) {
-			elements.aboutUsImg.src = "./img/kwiaty2.webp";
+			elements.aboutUsImg.src = "./img/dropdown_img_desktop.webp";
 		} else {
-			elements.aboutUsImg.src = "./img/kwiaty1.webp";
+			elements.aboutUsImg.src = "./img/dropdown_img_mobile.webp";
 		}
 	}
 	// If resolution is lover than 600px, changing the title
@@ -230,7 +230,7 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka | dekoracje";
 		}
-		elements.pageTitle.style.fontSize = 6 + "rem";
+		elements.pageTitle.style.fontSize = 5 + "rem";
 	}
 };
 

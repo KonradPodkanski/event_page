@@ -43,7 +43,7 @@ h2 {
 	font-family: Sansumi, Lato;
 }
 h1 {
-	@include mixins.font(6);
+	@include mixins.font(3.3);
 }
 h2 {
 	@include mixins.font(3.3);
@@ -443,7 +443,7 @@ path {
 		}
 	}
 	.about-us-img {
-		height: 30rem;
+		height: 33rem;
 	}
 
 	.swiper-slide {
@@ -509,8 +509,7 @@ path {
 
 	// General
 	h1 {
-		@include mixins.font(5);
-		top: 31rem;
+		@include mixins.font(4.5);
 	}
 	h2 {
 		@include mixins.font(4);
@@ -588,8 +587,7 @@ path {
 		}
 	}
 	h1 {
-		@include mixins.font(6);
-		top: 41rem;
+		@include mixins.font(5);
 	}
 	h2 {
 		@include mixins.font(5);
@@ -613,7 +611,7 @@ path {
 	}
 
 	.about-us-img {
-		height: 37rem;
+		height: 43rem;
 	}
 	.swiper {
 		height: 53rem;
