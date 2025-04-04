@@ -112,7 +112,7 @@ section:nth-child(even)::after {
 	text-transform: uppercase;
 	min-width: 30rem;
 	.page-title {
-		margin-left: -1rem;
+		margin-left: 0rem;
 	}
 }
 
@@ -437,6 +437,9 @@ path {
 }
 
 @media (min-width: breakpoints.$tablet) {
+	.page-title-city{
+		@include mixins.font(2.7);
+	}
 	.about-us {
 		p {
 			margin: 0 10rem;
@@ -455,6 +458,7 @@ path {
 }
 
 @media (min-width: breakpoints.$tablet-landscape) {
+
 	.nav-menu {
 		a {
 			padding-bottom: 0.5rem;

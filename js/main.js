@@ -230,7 +230,8 @@ const changePropertiesDependsOnResolution = () => {
 			document.querySelector("[data-translate='pageTitle']").innerText =
 				"florystyka | dekoracje";
 		}
-		elements.pageTitle.style.fontSize = 5 + "rem";
+		elements.pageTitle.style.fontSize = 4.7 + "rem";
+		elements.pageTitle.style.marginLeft = -1.8 + "rem";
 	}
 };
 
